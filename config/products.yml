@@ -1,0 +1,14 @@
+id: 001
+  name: "Travel Card Holder"
+  price: "9.25"
+  currency: "GBP"
+
+id: 002
+  name: "Personalised Cufflinks"
+  price: "45.00"
+  currency: "GBP"
+
+id: 003
+  name: "Kids T-Shirt"
+  price: "19.95"
+  currency: "GBP"
