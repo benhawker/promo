@@ -35,8 +35,7 @@ class Help
       Checkout::PRODUCTS.values.each do |product|
         products << "- " + product.to_s + "\n          "
       end
-
-      @products ||= products
+      products
     end
   end
 end

@@ -10,7 +10,7 @@ class Checkout
 
   def scan(code)
     if PRODUCTS.has_key?(code)
-      puts "Added #{PRODUCTS[code]["name"]} to your basket"
+      item_added_success_message(PRODUCTS[code]["name"])
       basket << code
     else
       raise InvalidProductGiven
@@ -18,11 +18,31 @@ class Checkout
   end
 
   def total
-    total = basket.inject(0) { |sum, code| sum + PRODUCTS[code]["price"]}
-    "£" + (sprintf "%.2f", total)
+   raise EmptyBasket if basket.empty?
+
+    print "Total: £#{total_before_discount} \n"
+
+    if discount_amount > 0
+      print "Promotional Discount has been applied \n"
+      puts "New Total: £#{total_after_discount}"
+    end
   end
 
   private
 
+  def total_after_discount
+    (total_before_discount - discount_amount).round(2)
+  end
 
+  def total_before_discount
+    basket.inject(0) { |sum, code| sum + PRODUCTS[code]["price"]}.round(2)
+  end
+
+  def item_added_success_message(product_name)
+    puts "Added #{product_name} to your basket"
+  end
+
+  def discount_amount
+    PromotionCalculator.new(basket, total_before_discount).calculate
+  end
 end

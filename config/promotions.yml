@@ -1,0 +1,27 @@
+basket_total_greater_than:
+    description: "If you spend over £60, then you get 10% off your purchase"
+    condition: 60
+    discount: 10.00
+    # Further logic could be added through a `discount_unit` attribute.
+    # discount_unit: "percentage"
+
+    ## One could then define further basket total greater than promos:
+    # description: "If you spend over £100, then you get £15 off your purchase"
+    # condition: 100
+    # discount: 15
+    # unit: "absolute"
+
+product_multiples_greater_or_equal_to:
+    name: "If you buy 2 or more travel card holders then the price drops to £8.50 (per unit)."
+    product_code: 001
+    condition: 2
+    discount: 0.75
+
+## One could also add different categories of promotions. Example:
+
+# two_specific_items:
+#     name: "Buy Product 001 and Product 002 together for a 5GBP discount"
+#     product_code_one: 001
+#     product_code_two: 002
+#     discount: 5.00
+#     discount_unit: "absolute"
