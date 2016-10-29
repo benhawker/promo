@@ -15,7 +15,7 @@ describe Checkout do
 
     context "when user provides an invalid product" do
       it "raises an error with a prompt for the user" do
-        expect { subject.scan(111) }.to raise_error InvalidProduct
+        expect { subject.scan(111) }.to raise_error InvalidProductGiven
       end
     end
   end
@@ -27,7 +27,7 @@ describe Checkout do
     end
 
     it "returns the correct total" do
-      expect(subject.total).to eq 54.25
+      expect(subject.total).to eq "£54.25"
     end
   end
 end

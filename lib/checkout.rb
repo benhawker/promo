@@ -10,15 +10,19 @@ class Checkout
 
   def scan(code)
     if PRODUCTS.has_key?(code)
-      puts "Added product to your basket"
+      puts "Added #{PRODUCTS[code]["name"]} to your basket"
       basket << code
     else
-      puts "We don't recognise this product. Type `?` for Help"
-      raise InvalidProduct
+      raise InvalidProductGiven
     end
   end
 
   def total
-    basket.inject(0) { |sum, product_code| sum + PRODUCTS[product_code]["price"]}
+    total = basket.inject(0) { |sum, code| sum + PRODUCTS[code]["price"]}
+    "£" + (sprintf "%.2f", total)
   end
+
+  private
+
+
 end
