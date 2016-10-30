@@ -1,5 +1,7 @@
 source "https://rubygems.org"
 
+gem 'coveralls', require: false
+
 group :test, :development do
   gem 'awesome_print'
   gem 'rspec', '~> 3.4'
