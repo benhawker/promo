@@ -7,14 +7,26 @@ class Help
         #{hl("Valid Products are:", :cyan)}
           #{products}
         #{hl("Example session:", :cyan)}
-        co = Checkout.new
-        co.scan(1)
-        co.scan(2)
-        co.total
-        ...
+        > co = Checkout.new
+        => #<Checkout:0x007fa3713eed08 @basket=[]>
 
+        > co.scan 1
+        Added Travel Card Holder to your basket
+        => [1]
+
+        > co.scan 1
+        Added Travel Card Holder to your basket
+        => [1, 1]
+
+        > co.scan 2
+        Added Personalised Cufflinks to your basket
+        => [1, 1, 2]
+
+        > co.total
+        Total: £63.50
+        Promotional Discount has been applied
+        New Total: £55.80
       HELPMSG
-
       STDOUT << msg
     end
 
