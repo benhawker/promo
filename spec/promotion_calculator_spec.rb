@@ -21,9 +21,14 @@ describe PromotionCalculator do
 
     context "for multiple promotions together" do
       it "calcuates the correct discount for a basket greater than 60 with 2 travel card holders" do
-        total = 100.00
         basket = [1, 1, 2, 3]
+        total = 100.00
         expect(described_class.new(basket, total).calculate).to eq 11.35
+      end
+
+      it "calculates the correct discount for multiple product promos" do
+        basket = [1, 1, 4, 4, 4]
+        expect(described_class.new(basket, total).calculate).to eq 16.50
       end
     end
   end

@@ -12,6 +12,11 @@ product_multiples_greater_or_equal_to:
     product_code: 001
     condition: 2
     discount: 0.75
+  -
+    name: "If you buy 3 or more test products then the price drops to £5.00 (per unit)."
+    product_code: 004
+    condition: 3
+    discount: 5.00
 
   # Example:
   # -
