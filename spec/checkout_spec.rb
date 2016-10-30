@@ -40,7 +40,7 @@ describe Checkout do
 
     context "baskets that qualifies for no promotion" do
       it "returns the correct total" do
-        expect { subject.total }.to output("Total: £54.25 \n").to_stdout
+        expect { subject.total }.to output("Total: £54.25\n").to_stdout
       end
     end
 

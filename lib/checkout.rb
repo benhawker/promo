@@ -20,11 +20,11 @@ class Checkout
   def total
    raise EmptyBasket if basket.empty?
 
-    print "Total: £#{total_before_discount} \n"
+    print "Total: £" + (sprintf "%.2f", total_before_discount) + "\n"
 
     if discount_amount > 0
       print "Promotional Discount has been applied \n"
-      puts "New Total: £#{total_after_discount}"
+      puts "New Total: £" + (sprintf "%.2f", total_after_discount)
     end
   end
 
