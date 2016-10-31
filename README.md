@@ -1,5 +1,5 @@
-![Travis Build](https://travis-ci.org/benhawker/promo.svg?branch=master)
-[![Coverage Status](https://coveralls.io/repos/benhawker/promo/badge.svg?branch=master&service=github)](https://coveralls.io/github/benhawker/promo?branch=master)
+![Travis Build](https://travis-ci.org/benhawker/promo.svg?branch=alternative)
+[![Coverage Status](https://coveralls.io/repos/benhawker/promo/badge.svg?branch=master&service=github)](https://coveralls.io/github/benhawker/promo?branch=alternative)
 
 
 # Promo Checkout
