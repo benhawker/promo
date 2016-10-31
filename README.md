@@ -6,6 +6,8 @@
 
 A Ruby 2.3 appliction that builds a checkout system with a variety of promotional rules.
 
+This branch enables the instantitation of a new Checkout instance with a promotions array.
+
 ===================
 
 ### Usage:
@@ -33,7 +35,7 @@ rspec
 Example session:
 
 ```
-> co = Checkout.new
+> co = Checkout.new([CardHolder, TenPercent])
 => #<Checkout:0x007fa3713eed08 @basket=[]>
 
 > co.scan 1

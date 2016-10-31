@@ -2,8 +2,14 @@ require 'spec_helper'
 
 describe Checkout do
 
-  let(:promotions) { [CardHolder, TenPercent]}
+  let(:promotions) { [:CardHolder, :TenPercent] }
   subject { described_class.new(promotions) }
+
+  describe "constructor" do
+    it "raises an error if any of the promotions passed is not valid" do
+      expect { described_class.new([:UndefinedPromo, :CardHolder]) }.to raise_error InvalidPromotionGiven
+    end
+  end
 
   describe "#scan" do
     before do

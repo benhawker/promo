@@ -1,12 +1,15 @@
 class Checkout
 
   PRODUCTS = YAML::load(File.open(File.join('config', 'products.yml')))
+  VALID_PROMOTIONS = [:CardHolder, :TenPercent]
 
   attr_reader :basket, :promotions
 
   def initialize(promotions=[])
     @basket = []
     @promotions = promotions
+
+    validate_promotions!
   end
 
   def scan(code)
@@ -50,10 +53,14 @@ class Checkout
     discount = 0
 
     promotions.each do |promotion|
-      discount += promotion.new(basket, current_total).calculate
+      promo_klass = Module.const_get(promotion)
+      discount += promo_klass.new(basket, current_total).calculate
       current_total -= discount
     end
     discount
   end
 
+  def validate_promotions!
+    raise InvalidPromotionGiven unless (promotions - VALID_PROMOTIONS).empty?
+  end
 end

@@ -26,7 +26,7 @@ end
 
 class InvalidPromotionGiven < StandardError
   def initialize
-    super("Sorry but we don't have any record of this promotion. You must specify it first.")
+    super("Sorry but we don't have any record of this promotion.")
   end
 end
 
