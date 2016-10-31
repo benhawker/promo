@@ -8,6 +8,13 @@ A Ruby 2.3 appliction that builds a checkout system with a variety of promotiona
 
 This branch enables the instantitation of a new Checkout instance with a promotions array.
 
+Please note that to return the correct prices (as expected by the spec) you will need to instantiate your checkout with:
+
+```
+> co = Checkout.new([CardHolder, TenPercent])
+
+```
+
 ===================
 
 ### Usage:
