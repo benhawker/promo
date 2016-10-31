@@ -5,11 +5,7 @@ class CardHolder < PromotionCalculator
   UNIT_PROMO_DISCOUNT = 9.25 - 8.50
 
   def calculate
-    if product_count >= BUY_X_OR_MORE
-      UNIT_PROMO_DISCOUNT * product_count
-    else
-      0
-    end
+    product_count >= BUY_X_OR_MORE ? UNIT_PROMO_DISCOUNT * product_count : 0
   end
 
   private

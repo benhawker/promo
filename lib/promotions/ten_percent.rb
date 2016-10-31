@@ -4,11 +4,7 @@ class TenPercent < PromotionCalculator
   PERCENTAGE_DISCOUNT = 10.00
 
   def calculate
-    if total > SPEND_GREATER_THAN
-      total / PERCENTAGE_DISCOUNT
-    else
-      0
-    end
+    total > SPEND_GREATER_THAN ? total / PERCENTAGE_DISCOUNT : 0
   end
 
 end
