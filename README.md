@@ -6,11 +6,11 @@
 
 A Ruby 2.3 appliction that builds a checkout system with a variety of promotional rules.
 
-There are 2 branches:
+There are 2 branches with 2 valid approaches:
 
-- `master` makes heavy use of YAML to define the promotions. `Checkout` does not accept any promotional rules as they are pre-defined by `promotions/yml`.
+- `master` makes heavy use of YAML to define the promotions. `Checkout` does not accept any promotional rules as they are pre-defined by `promotions.yml`.
 
-- `alternative` defines the promotions as separate classes that inherit from `PromotionCalculator`. `Checkout` accepts the passing of specific promotions (as long as they are valid).
+- `alternative` defines the promotions as separate classes that inherit from `PromotionCalculator`. `Checkout` accepts the passing of specific promotions (as long as they are valid) as the sample interface requested.
 
 ===================
 
