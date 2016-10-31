@@ -2,7 +2,8 @@ require 'spec_helper'
 
 describe Checkout do
 
-  subject { described_class.new }
+  let(:promotions) { [CardHolder, TenPercent]}
+  subject { described_class.new(promotions) }
 
   describe "#scan" do
     before do

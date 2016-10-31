@@ -2,14 +2,15 @@ class Checkout
 
   PRODUCTS = YAML::load(File.open(File.join('config', 'products.yml')))
 
-  attr_reader :basket
+  attr_reader :basket, :promotions
 
-  def initialize
+  def initialize(promotions=[])
     @basket = []
+    @promotions = promotions
   end
 
   def scan(code)
-    if PRODUCTS.has_key?(code)
+    if PRODUCTS.any? { |h| h["code"] == code }
       item_added_success_message(PRODUCTS[code]["name"])
       basket << code
     else
@@ -35,7 +36,9 @@ class Checkout
   end
 
   def total_before_discount
-    basket.inject(0) { |sum, code| sum + PRODUCTS[code]["price"]}.round(2)
+    basket.inject(0) do |sum, code|
+      sum + PRODUCTS.detect { |h| h["code"] == code }["price"]
+    end.round(2)
   end
 
   def item_added_success_message(product_name)
@@ -43,6 +46,14 @@ class Checkout
   end
 
   def discount_amount
-    PromotionCalculator.new(basket, total_before_discount).calculate
+    current_total = total_before_discount
+    discount = 0
+
+    promotions.each do |promotion|
+      discount += promotion.new(basket, current_total).calculate
+      current_total -= discount
+    end
+    discount
   end
+
 end
