@@ -1,6 +1,7 @@
 class PromotionCalculator
 
   PROMOTIONS = YAML::load(File.open(File.join('config', 'promotions.yml')))
+  PRODUCTS = YAML::load(File.open(File.join('config', 'products.yml')))
 
   attr_reader :basket, :total
 
@@ -16,6 +17,26 @@ class PromotionCalculator
   private
 
   def product_specific_discounts
+     many_of_single_product + buy_two_get_one_free
+  end
+
+  def buy_two_get_one_free
+    discount = 0
+
+    PROMOTIONS["buy_x_get_y_free"].each do |promo|
+      product_code = promo["product_code"]
+      number_free = promo["get_free"]
+      product_count = basket_counts.fetch(product_code, 0)
+
+      discount_per_x_products = PRODUCTS[product_code]["price"] * number_free
+      times_applied = product_count / promo["condition"]
+
+      discount += discount_per_x_products * times_applied
+    end
+    discount
+  end
+
+  def many_of_single_product
     discount = 0
 
     PROMOTIONS["product_multiples_greater_or_equal_to"].each do |promo|

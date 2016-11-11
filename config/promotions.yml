@@ -18,6 +18,13 @@ product_multiples_greater_or_equal_to:
     condition: 3
     discount: 5.00
 
+buy_x_get_y_free:
+  -
+    name: "Buy Two T-shirts and Get One free"
+    product_code: 003
+    condition: 3
+    get_free: 1
+
   # Example:
   # -
   #   name: "Example additional promotion of same type"
